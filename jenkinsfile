@@ -23,7 +23,7 @@ pipeline {
             post {
                 always {
                     sh 'sleep 2'
-                    sh 'echo Deployment to preview finished'
+                    sh 'echo Deployment too preview finished'
                 }
                 success {
                     echo 'Deployment successful'
