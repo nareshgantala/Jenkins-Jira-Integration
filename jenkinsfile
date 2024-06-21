@@ -4,18 +4,6 @@ pipeline {
         choice(name: 'DEPLOY_STAGE', choices: ['Preview', 'Production'], description: 'Choose the stage to deploy')
     }
     stages {
-        stage('Checkout') {
-            steps {
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/master']], 
-                    doGenerateSubmoduleConfigurations: false, 
-                    extensions: [], 
-                    submoduleCfg: [], 
-                    userRemoteConfigs: [[url: 'https://github.com/nareshgantala/Jenkins-Jira-Integration.git']]
-                ])
-            }
-        }
         stage('Preview') {
             when {
                 expression { params.DEPLOY_STAGE == 'Preview' }
