@@ -19,7 +19,7 @@ pipeline {
          stage('Production') {
 
             steps {
-                echo 'Deploying to Production from master...'
+                echo 'Deployingg to Production from master...'
             }
             post {
                 always {
