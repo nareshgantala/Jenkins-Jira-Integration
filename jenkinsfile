@@ -28,7 +28,7 @@ pipeline {
             }
 
             steps {
-                echo 'Deployingg to Production from master...'
+                echo 'Deployinggg to Production from master...'
             }
             post {
                 always {
