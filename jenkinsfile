@@ -9,13 +9,13 @@ pipeline {
                 expression { params.DEPLOY_STAGE == 'Preview' }
             }
             steps {
-                echo 'Deploying to Staging or preview from master...'
+                echo 'Deploying to Staging from master...'
             }
-             post {
-                 always {
-                     // previous to version 2.0.0 you must provide parameters to this command (see below)!
-                     jiraSendDeploymentInfo() 
-                 }
+            post {
+                always {
+                    jiraSendDeploymentInfo()
+                }
+            }
         }
         stage('Production') {
             when {
@@ -24,12 +24,11 @@ pipeline {
             steps {
                 echo 'Deploying to Production from master...'
             }
-             post {
-                 always {
-                     // previous to version 2.0.0 you must provide parameters to this command (see below)!
-                     jiraSendDeploymentInfo() 
-                 }
-        }
+            post {
+                always {
+                    jiraSendDeploymentInfo()
+                }
+            }
         }
     }
 }
