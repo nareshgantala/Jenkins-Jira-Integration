@@ -11,11 +11,6 @@ pipeline {
             steps {
                 echo 'Deploying to Staging or preview from master...'
             }
-            post {
-                always {
-                    jiraSendDeploymentInfo()
-                }
-            }
         }
         stage('Production') {
             when {
