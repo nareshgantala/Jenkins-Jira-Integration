@@ -19,11 +19,6 @@ pipeline {
             steps {
                 echo 'Deploying to Production from master...'
             }
-            post {
-                always {
-                    jiraSendDeploymentInfo()
-                }
-            }
         }
     }
 }
