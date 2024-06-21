@@ -13,7 +13,11 @@ pipeline {
             }
             post {
                 always {
-                    jiraSendDeploymentInfo environmentId: 'Preview', environmentName: 'Preview', environmentType: 'staging'
+                    script {
+                        if (params.DEPLOY_STAGE == 'Preview') {
+                            jiraSendDeploymentInfo()
+                        }
+                    }
                 }
             }
         }
@@ -26,7 +30,11 @@ pipeline {
             }
             post {
                 always {
-                    jiraSendDeploymentInfo environmentId: 'Production', environmentName: 'Production, environmentType: 'Production'
+                    script {
+                        if (params.DEPLOY_STAGE == 'Production') {
+                            jiraSendDeploymentInfo()
+                        }
+                    }
                 }
             }
         }
