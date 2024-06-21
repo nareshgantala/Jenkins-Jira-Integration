@@ -1,7 +1,13 @@
 pipeline {
      agent any
+     parameters {
+         choice(name: 'DEPLOY_STAGE', choices: ['Preview', 'Production'], description: 'Choose the stage to deploy')
+    }
      stages {
          stage('Preview') {
+            when {
+                expression { params.DEPLOY_STAGE == 'Preview' }
+            }
 
              steps {
                  echo 'Deployiing to Staging from master...'
@@ -17,6 +23,9 @@ pipeline {
              }
          }
          stage('Production') {
+            when {
+                expression { params.DEPLOY_STAGE == 'Production' }
+            }
 
             steps {
                 echo 'Deployingg to Production from master...'
