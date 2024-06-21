@@ -18,7 +18,7 @@ pipeline {
                     site: 'nareshjiraog1.atlassian.net', 
                     state: 'in_progress'
                 )
-                sh 'echo Deploy too Preview starting...'
+                sh 'echo Deploy tooo Preview starting...'
             }
             post {
                 always {
