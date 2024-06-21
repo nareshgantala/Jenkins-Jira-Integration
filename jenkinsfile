@@ -4,20 +4,62 @@ pipeline {
         choice(name: 'DEPLOY_STAGE', choices: ['Preview', 'Production'], description: 'Choose the stage to deploy')
     }
     stages {
+        stage('Checkout') {
+            steps {
+                checkout([
+                    $class: 'GitSCM', 
+                    branches: [[name: '*/master']], 
+                    doGenerateSubmoduleConfigurations: false, 
+                    extensions: [], 
+                    submoduleCfg: [], 
+                    userRemoteConfigs: [[url: 'https://github.com/nareshgantala/Jenkins-Jira-Integration.git']]
+                ])
+            }
+        }
         stage('Preview') {
             when {
                 expression { params.DEPLOY_STAGE == 'Preview' }
             }
             steps {
-                echo 'Deploying to Staging from master...'
+                // Notify Jira a new deployment has started
+                jiraSendDeploymentInfo (
+                    environmentId: 'us-preview-1', 
+                    environmentName: 'us-preview-1', 
+                    environmentType: 'staging', 
+                    serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
+                    site: 'nareshjiraog1.atlassian.net', 
+                    state: 'in_progress'
+                )
+                sh 'echo Deploy to Preview starting...'
             }
             post {
                 always {
-                    script {
-                        if (params.DEPLOY_STAGE == 'Preview') {
-                            jiraSendDeploymentInfo()
-                        }
-                    }
+                    sh 'sleep 2'
+                    sh 'echo Deployment to preview finished'
+                }
+                success {
+                    echo 'Deployment successful'
+                    // Notify Jira if the deployment succeeded
+                    jiraSendDeploymentInfo (
+                        environmentId: 'us-preview-1', 
+                        environmentName: 'us-preview-1', 
+                        environmentType: 'staging', 
+                        serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
+                        site: 'nareshjiraog1.atlassian.net', 
+                        state: 'successful'
+                    )
+                }
+                failure {
+                    echo 'Deployment failed'
+                    // Notify Jira if the deployment failed
+                    jiraSendDeploymentInfo (
+                        environmentId: 'us-preview-1', 
+                        environmentName: 'us-preview-1', 
+                        environmentType: 'staging', 
+                        serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
+                        site: 'nareshjiraog1.atlassian.net', 
+                        state: 'failed'
+                    )
                 }
             }
         }
@@ -26,15 +68,45 @@ pipeline {
                 expression { params.DEPLOY_STAGE == 'Production' }
             }
             steps {
-                echo 'Deploying to Production from master...'
+                // Notify Jira a new deployment has started
+                jiraSendDeploymentInfo (
+                    environmentId: 'us-prod-1', 
+                    environmentName: 'us-prod-1', 
+                    environmentType: 'production', 
+                    serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
+                    site: 'nareshjiraog1.atlassian.net', 
+                    state: 'in_progress'
+                )
+                sh 'echo Deploy to Production starting...'
             }
             post {
                 always {
-                    script {
-                        if (params.DEPLOY_STAGE == 'Production') {
-                            jiraSendDeploymentInfo()
-                        }
-                    }
+                    sh 'sleep 2'
+                    sh 'echo Deployment to production finished'
+                }
+                success {
+                    echo 'Deployment successful'
+                    // Notify Jira if the deployment succeeded
+                    jiraSendDeploymentInfo (
+                        environmentId: 'us-prod-1', 
+                        environmentName: 'us-prod-1', 
+                        environmentType: 'production', 
+                        serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
+                        site: 'nareshjiraog1.atlassian.net', 
+                        state: 'successful'
+                    )
+                }
+                failure {
+                    echo 'Deployment failed'
+                    // Notify Jira if the deployment failed
+                    jiraSendDeploymentInfo (
+                        environmentId: 'us-prod-1', 
+                        environmentName: 'us-prod-1', 
+                        environmentType: 'production', 
+                        serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
+                        site: 'nareshjiraog1.atlassian.net', 
+                        state: 'failed'
+                    )
                 }
             }
         }
