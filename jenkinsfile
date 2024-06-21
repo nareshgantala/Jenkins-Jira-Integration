@@ -1,19 +1,34 @@
 pipeline {
-     agent any
-     stages {
-         stage('Preview') {
-
-             steps {
-                 echo 'Deploying to Staging from master...'
-             }
-
-         }
-         stage('Production') {
-
+    agent any
+    parameters {
+        choice(name: 'DEPLOY_STAGE', choices: ['Preview', 'Production'], description: 'Choose the stage to deploy')
+    }
+    stages {
+        stage('Preview') {
+            when {
+                expression { params.DEPLOY_STAGE == 'Preview' }
+            }
+            steps {
+                echo 'Deploying to Staging from master...'
+            }
+            post {
+                always {
+                    jiraSendDeploymentInfo environmentType: 'staging'
+                }
+            }
+        }
+        stage('Production') {
+            when {
+                expression { params.DEPLOY_STAGE == 'Production' }
+            }
             steps {
                 echo 'Deploying to Production from master...'
             }
-
-         }
-     }
- }
+            post {
+                always {
+                    jiraSendDeploymentInfo environmentType: 'production'
+                }
+            }
+        }
+    }
+}
