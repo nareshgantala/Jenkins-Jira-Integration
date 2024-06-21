@@ -1,0 +1,27 @@
+pipeline {
+     agent any
+     stages {
+         stage('Preview') {
+
+             steps {
+                 echo 'Deploying to Staging from master...'
+             }
+             post {
+                 always {
+                     jiraSendDeploymentInfo environmentType: 'staging'
+                 }
+             }
+         }
+         stage('Production') {
+
+            steps {
+                echo 'Deploying to Production from master...'
+            }
+            post {
+                always {
+                    jiraSendDeploymentInfo environmentType: 'production'
+                }
+            }
+         }
+     }
+ }
