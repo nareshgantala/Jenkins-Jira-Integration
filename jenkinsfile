@@ -11,8 +11,8 @@ pipeline {
             steps {
                 // Notify Jira a new deployment has started
                 jiraSendDeploymentInfo (
-                    environmentId: 'us-preview-1', 
-                    environmentName: 'us-preview-1', 
+                    environmentId: 'preview', 
+                    environmentName: 'preview', 
                     environmentType: 'staging', 
                     serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                     site: 'nareshjiraog1.atlassian.net', 
@@ -29,8 +29,8 @@ pipeline {
                     echo 'Deployment successful'
                     // Notify Jira if the deployment succeeded
                     jiraSendDeploymentInfo (
-                        environmentId: 'us-preview-1', 
-                        environmentName: 'us-preview-1', 
+                        environmentId: 'preview', 
+                        environmentName: 'preview', 
                         environmentType: 'staging', 
                         serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                         site: 'nareshjiraog1.atlassian.net', 
@@ -41,8 +41,8 @@ pipeline {
                     echo 'Deployment failed'
                     // Notify Jira if the deployment failed
                     jiraSendDeploymentInfo (
-                        environmentId: 'us-preview-1', 
-                        environmentName: 'us-preview-1', 
+                        environmentId: 'preview', 
+                        environmentName: 'preview', 
                         environmentType: 'staging', 
                         serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                         site: 'nareshjiraog1.atlassian.net', 
@@ -58,8 +58,8 @@ pipeline {
             steps {
                 // Notify Jira a new deployment has started
                 jiraSendDeploymentInfo (
-                    environmentId: 'us-prod-1', 
-                    environmentName: 'us-prod-1', 
+                    environmentId: 'production', 
+                    environmentName: 'production', 
                     environmentType: 'production', 
                     serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                     site: 'nareshjiraog1.atlassian.net', 
@@ -76,8 +76,8 @@ pipeline {
                     echo 'Deployment successful'
                     // Notify Jira if the deployment succeeded
                     jiraSendDeploymentInfo (
-                        environmentId: 'us-prod-1', 
-                        environmentName: 'us-prod-1', 
+                        environmentId: 'production', 
+                        environmentName: 'production', 
                         environmentType: 'production', 
                         serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                         site: 'nareshjiraog1.atlassian.net', 
@@ -88,8 +88,8 @@ pipeline {
                     echo 'Deployment failed'
                     // Notify Jira if the deployment failed
                     jiraSendDeploymentInfo (
-                        environmentId: 'us-prod-1', 
-                        environmentName: 'us-prod-1', 
+                        environmentId: 'production', 
+                        environmentName: 'production', 
                         environmentType: 'production', 
                         serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                         site: 'nareshjiraog1.atlassian.net', 
