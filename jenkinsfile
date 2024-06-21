@@ -9,7 +9,7 @@ pipeline {
                 expression { params.DEPLOY_STAGE == 'Preview' }
             }
             steps {
-                echo 'Deploying to Staging from master...'
+                echo 'Deploying to Staging or preview from master...'
             }
             post {
                 always {
