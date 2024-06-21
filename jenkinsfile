@@ -10,7 +10,7 @@ pipeline {
             }
 
              steps {
-                 echo 'Deployiing to Staging from master...'
+                 echo 'Deployiingg to Staging from master...'
              }
              post {
                  always {
