@@ -4,7 +4,7 @@ pipeline {
          stage('Preview') {
 
              steps {
-                 echo 'Deploying to Staging from master...'
+                 echo 'Deployiing to Staging from master...'
              }
              post {
                  always {
