@@ -11,8 +11,8 @@ pipeline {
             steps {
                 // Notify Jira a new deployment has started
                 jiraSendDeploymentInfo (
-                    environmentId: 'preview', 
-                    environmentName: 'preview', 
+                    environmentId: 'Preview', 
+                    environmentName: 'Preview', 
                     environmentType: 'staging', 
                     serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                     site: 'nareshjiraog1.atlassian.net', 
@@ -29,8 +29,8 @@ pipeline {
                     echo 'Deployment successful'
                     // Notify Jira if the deployment succeeded
                     jiraSendDeploymentInfo (
-                        environmentId: 'preview', 
-                        environmentName: 'preview', 
+                        environmentId: 'Preview', 
+                        environmentName: 'Preview', 
                         environmentType: 'staging', 
                         serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                         site: 'nareshjiraog1.atlassian.net', 
@@ -41,8 +41,8 @@ pipeline {
                     echo 'Deployment failed'
                     // Notify Jira if the deployment failed
                     jiraSendDeploymentInfo (
-                        environmentId: 'preview', 
-                        environmentName: 'preview', 
+                        environmentId: 'Preview', 
+                        environmentName: 'Preview', 
                         environmentType: 'staging', 
                         serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                         site: 'nareshjiraog1.atlassian.net', 
@@ -58,9 +58,9 @@ pipeline {
             steps {
                 // Notify Jira a new deployment has started
                 jiraSendDeploymentInfo (
-                    environmentId: 'production', 
-                    environmentName: 'production', 
-                    environmentType: 'production', 
+                    environmentId: 'Production', 
+                    environmentName: 'Production', 
+                    environmentType: 'Production', 
                     serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                     site: 'nareshjiraog1.atlassian.net', 
                     state: 'in_progress'
@@ -76,9 +76,9 @@ pipeline {
                     echo 'Deployment successful'
                     // Notify Jira if the deployment succeeded
                     jiraSendDeploymentInfo (
-                        environmentId: 'production', 
-                        environmentName: 'production', 
-                        environmentType: 'production', 
+                        environmentId: 'Production', 
+                        environmentName: 'Production', 
+                        environmentType: 'Production', 
                         serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                         site: 'nareshjiraog1.atlassian.net', 
                         state: 'successful'
@@ -88,9 +88,9 @@ pipeline {
                     echo 'Deployment failed'
                     // Notify Jira if the deployment failed
                     jiraSendDeploymentInfo (
-                        environmentId: 'production', 
-                        environmentName: 'production', 
-                        environmentType: 'production', 
+                        environmentId: 'Production', 
+                        environmentName: 'Production', 
+                        environmentType: 'Production', 
                         serviceIds: ['b:YXJpOmNsb3VkOmdyYXBoOjpzZXJ2aWNlLzA0ZTU1Nzc4LWM0ZDMtNDNlZS1iMWQzLWIzZmY0ODZmYjVjZC9kYTMyOTIzYS0xYTc1LTExZWYtODc3NS0xMjhiNDI4MTk0MjQ='], 
                         site: 'nareshjiraog1.atlassian.net', 
                         state: 'failed'
